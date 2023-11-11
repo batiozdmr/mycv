@@ -37,14 +37,19 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+THIRD_PARTY_APPS = [
+    'rosetta'
+]
+
 LOCALE_APPS = [
     'apps.main',
     'apps.profiles',
     'apps.parameter',
     'apps.contact',
+    'apps.services',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + LOCALE_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCALE_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -110,7 +115,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'
+gettext = lambda s: s
+LANGUAGES = (
+    ('tr', gettext('Türkçe')),
+    ('en', gettext('English')),
+)
 
 TIME_ZONE = 'UTC'
 
