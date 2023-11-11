@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg main_menu">
+    <div class="container main_menu_bg">
+        <a class="navbar-brand" href="index.html">
+            <img src="{{ settings.logo.url }}" alt="ZYAN" class="img-fluid w-100" width="95"/>
+        </a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fa-sharp fa-regular fa-bars bar_icon"></i>
+            <i class="fa-regular fa-xmark close_icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav m-auto">
+                {% for menu in menu_list %}
+                    <li class="nav-item">
+                        <a class="nav-link text_hover_animaiton active" href="{{ menu.slug }} ">
+                            {{ menu.text }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight">
+    <div class="offcanvas-header">
+        <a class="offcanvas-logo" href="index_2.html">
+            <img src="images/logo2.png" alt="ZAYAN" class="img-fluid w-100"/>
+        </a>
+        <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+        >
+            <i class="fa-regular fa-xmark"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="tf__design_form offcanvas_form">
+            <div class="offcanvas-content-box">
+                <h4 class="offcanvas_title">About us</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
+                    tempor incididunt ut labore et magna aliqua. Ut enim ad minim
+                    veniam laboris.
+                </p>
+            </div>
+            <div class="offcanvas_contact_form">
+                <h4 class="offcanvas_title">Get In Touch</h4>
+                <form action="#">
+                    <input
+                            type="text"
+                            placeholder="Your Name"
+                            aria-autocomplete="list"
+                    />
+                    <input type="email" placeholder="Your Email"/>
+                    <textarea rows="4" placeholder="Message"></textarea>
+                    <button type="submit" class="common_btn">submit now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

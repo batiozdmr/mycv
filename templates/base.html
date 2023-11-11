@@ -1,0 +1,70 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi"
+    />
+    <title>ZYAN - Personal Portfolio HTML Template</title>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/scroll_button.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/plugin.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/spacing.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
+</head>
+
+<body>
+
+<div class="preloader">
+    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+    </svg>
+    <h5 class="preloader-text">{% trans "Yükleniyor" %}</h5>
+</div>
+
+
+
+{% block header %}
+    {% include 'partials/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock %}
+
+
+
+<div class="progress active c-pointer">
+    <svg
+            class="progress-svg"
+            width="100%"
+            height="100%"
+            viewBox="-1 -1 102 102"
+    >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+    </svg>
+</div>
+<div id="magic-cursor">
+    <div id="ball"></div>
+</div>
+
+<script src="{% static "js/plugin.js" %}"></script>
+<!--scroll button js-->
+<script src="{% static "js/scroll_button.js" %}"></script>
+<!--sticky sidebar js-->
+<script src="{% static "js/sticky_sidebar.js" %}"></script>
+<!-- Animation -->
+<script src="{% static "js/animation.js" %}"></script>
+<!--main/custom js-->
+<script src="{% static "js/main.js" %}"></script>
+</body>
+</html>
