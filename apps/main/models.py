@@ -17,5 +17,10 @@ class MainPage(models.Model):
     slider_button_text = models.CharField(max_length=250)
     slider_button_file = models.FileField(upload_to="uploads/mycv", null=True, blank=True)
 
+    contact_text = models.CharField(max_length=250, null=True)
+    contact_content = models.TextField(null=True)
+    skill_text = models.CharField(max_length=250, null=True)
+    skill_content = models.TextField(null=True)
+
     def __str__(self):
         return str(self.id)

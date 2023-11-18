@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-    <section
+    <section id="about"
             class="tf__banner banner"
             style="background: url(images/bg/banner.jpg)">
         <div class="container">
@@ -73,70 +73,37 @@
             </div>
         </div>
     </section>
-    <section class="tf__design mt_135 xs_mt_40 mb_120 xs_mb_80" id="counter">
+    <section class="tf__design mt_135 xs_mt_40 mb_120 xs_mb_80" id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="tf__design_text">
-                        <h2>Design <span>and Innovation</span></h2>
-                        <p class="">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                            auting fugit sed thisnquia consequuntur magni dolores eos
-                            designer heresm qui ratione voluptatem sequi nesciuNeque porro
-                            quisquam est, oursqui dolorem ipsum quia dolor sit amet
-                            consectetur, adipisci velit, sed quia non numquam
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-md-6">
-                            <div
-                                    class="tf__design_counter fade_left"
-                                    data-trigerId="counter"
-                            >
-                  <span class="icon">
-                    <img
-                            src="svg/complete-project.svg"
-                            alt="counter"
-                            class="svg img-fluid w-100"
-                    />
-                  </span>
-                                <h3><span class="counter">10</span>k+</h3>
-                                <p>Complete project</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div
-                                    class="tf__design_counter fade_left"
-                                    data-trigerId="counter"
-                            >
-                  <span class="icon">
-                    <img
-                            src="svg/client-review.svg"
-                            alt="counter"
-                            class="img-fluid w-100 svg"
-                    />
-                  </span>
-                                <h3><span class="counter">800</span>+</h3>
-                                <p>Client review</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
+
+                <div class="col-12">
                     <div class="tf__design_form">
-                        <h2 class="has-animation">{% trans "İletişim" %}</h2>
+                        <h2 class="has-animation">
+                            {{ main_page.contact_text }}
+                        </h2>
                         <p class="">
-                            For your car we will do everything advice design in us repairs
-                            and maintenance We are the some preferred.
+                            {{ main_page.contact_content }}
                         </p>
 
                         <form action="{% url "contact" %}" method="post">
                             {% csrf_token %}
-                            <input class="" type="text" placeholder="Ad Soyad" name="name" required/>
-                            <input class="" type="email" placeholder="E Posta" name="email" required/>
-                            <input class="" type="text" placeholder="Telefon" name="phone" required/>
-                            <textarea class="" rows="4" placeholder="Mesaj" name="message" required></textarea>
-                            <button type="submit" class="common_btn">submit now</button>
+
+                            <div class="row d-flex col-12">
+                                <div class="col-xl-4 col-lg-4">
+                                    <input class="" type="text" placeholder="Ad Soyad" name="name" required/>
+                                </div>
+                                <div class="col-xl-4 col-lg-4">
+                                    <input class="" type="email" placeholder="E Posta" name="email" required/>
+                                </div>
+                                <div class="col-xl-4 col-lg-4">
+                                    <input class="" type="text" placeholder="Telefon" name="phone" required/>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="" rows="4" placeholder="Mesaj" name="message" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="common_btn">{% trans "Gönder" %}</button>
                         </form>
 
                     </div>
@@ -149,167 +116,48 @@
             <div class="row">
                 <div class="col-xl-10 col-lg-8 m-auto mb_60">
                     <div class="tf__section_heading mb_40">
-                        <h5 class="has-animation">Education & Skill</h5>
+                        <h5 class="has-animation">{{ main_page.skill_text }}</h5>
                         <h2 class="has-animation">
-                            Showcasing your talent <br/>
-                            amplifying your impact
+                            {{ main_page.skill_content }}
                         </h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__single_skills fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".13"
-                    >
-                        <span>2014 - 2018</span>
-                        <h3>Wordpress and End Developer</h3>
-                        <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                            aut fugit sed thisnquia consequuntur magni dolores eos qui
-                            ratione voluptatem
-                        </p>
+                {% for education in education_list %}
+                    <div class="col-xl-6 col-lg-6">
+                        <div
+                                class="tf__single_skills fade_bottom"
+                                data-trigerId="skills"
+                                data-stagger=".13"
+                        >
+                            <span>{{ education.year }}</span>
+                            <h3>{{ education.text }}</h3>
+                            <p>
+                                {{ education.content }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__single_skills fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <span>2012 - 2014</span>
-                        <h3>Python Developer</h3>
-                        <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                            aut fugit sed thisnquia consequuntur magni dolores eos qui
-                            ratione voluptatem
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__single_skills fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <span>2005 - 2009</span>
-                        <h3>Kent State University</h3>
-                        <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                            aut fugit sed thisnquia consequuntur magni dolores eos qui
-                            ratione voluptatem
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__single_skills fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <span>2009 - 2012</span>
-                        <h3>User Experience Design</h3>
-                        <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                            aut fugit sed thisnquia consequuntur magni dolores eos qui
-                            ratione voluptatem
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__team_skills_bar_single fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <p>HTML</p>
-                        <div id="bar1" class="barfiller">
-                            <div class="tipWrap">
-                                <span class="tip"></span>
+                {% for skill in skill_list %}
+                    <div class="col-xl-6 col-lg-6">
+                        <div
+                                class="tf__team_skills_bar_single fade_bottom"
+                                data-trigerId="skills"
+                                data-stagger=".25"
+                        >
+                            <p>{{ skill.text }}</p>
+                            <div id="bar1" class="barfiller">
+                                <div class="tipWrap">
+                                    <span class="tip"></span>
+                                </div>
+                                <span class="fill" data-percentage="{{ skill.percentage }}"></span>
                             </div>
-                            <span class="fill" data-percentage="75"></span>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__team_skills_bar_single fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <p>Python</p>
-                        <div id="bar2" class="barfiller">
-                            <div class="tipWrap">
-                                <span class="tip"></span>
-                            </div>
-                            <span class="fill" data-percentage="90"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__team_skills_bar_single fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <p>CSS</p>
-                        <div id="bar3" class="barfiller">
-                            <div class="tipWrap">
-                                <span class="tip"></span>
-                            </div>
-                            <span class="fill" data-percentage="80"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__team_skills_bar_single fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <p>Photoshop</p>
-                        <div id="bar4" class="barfiller">
-                            <div class="tipWrap">
-                                <span class="tip"></span>
-                            </div>
-                            <span class="fill" data-percentage="70"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__team_skills_bar_single fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <p>Java Script</p>
-                        <div id="bar5" class="barfiller">
-                            <div class="tipWrap">
-                                <span class="tip"></span>
-                            </div>
-                            <span class="fill" data-percentage="70"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div
-                            class="tf__team_skills_bar_single fade_bottom"
-                            data-trigerId="skills"
-                            data-stagger=".25"
-                    >
-                        <p>Figma</p>
-                        <div id="bar6" class="barfiller">
-                            <div class="tipWrap">
-                                <span class="tip"></span>
-                            </div>
-                            <span class="fill" data-percentage="80"></span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -318,135 +166,10 @@
             <div class="col-12">
                 <div class="marquee_animi">
                     <ul>
-                        <li>* PHP</li>
-                        <li>* Pyrhon</li>
-                        <li>* design</li>
-                        <li>* world</li>
-                        <li>* Development</li>
+                        {% for skill in skill_list %}
+                            <li>* {{ skill.text }}</li>
+                        {% endfor %}
                     </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="tf__blog pt_125 xs_pt_75 pb_40 xs_pb_0" id="blogs">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-8 col-lg-9 mb_30">
-                    <div class="tf__section_heading">
-                        <h5 class="has-animation">My blog</h5>
-                        <h2 class="has-animation">
-                            Unlocking the potential of your personal brand
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 col-md-6">
-                    <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
-                        <a
-                                href="blog_details.html"
-                                class="tf__blog_img"
-                                data-cursor="read <br> more"
-                        >
-                            <img
-                                    src="images/blog/1.jpg"
-                                    alt="blog"
-                                    class="img-fluid w-100"
-                            />
-                        </a>
-                        <div class="tf__blog_text">
-                            <span>31 December,2022</span>
-                            <ul>
-                                <li>
-                                    <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
-                                </li>
-                                <li>
-                                    <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
-                                </li>
-                            </ul>
-                            <a href="blog_details.html"
-                            >The standard personal My portfolio</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
-                        <a
-                                href="blog_details.html"
-                                class="tf__blog_img"
-                                data-cursor="read <br> more"
-                        >
-                            <img
-                                    src="images/blog/2.jpg"
-                                    alt="blog"
-                                    class="img-fluid w-100"
-                            />
-                        </a>
-                        <div class="tf__blog_text">
-                            <span>31 December,2022</span>
-                            <ul>
-                                <li>
-                                    <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
-                                </li>
-                                <li>
-                                    <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
-                                </li>
-                            </ul>
-                            <a href="blog_details.html"
-                            >The standard personal My portfolio</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
-                        <a
-                                href="blog_details.html"
-                                class="tf__blog_img"
-                                data-cursor="read <br> more"
-                        >
-                            <img
-                                    src="images/blog/3.jpg"
-                                    alt="blog"
-                                    class="img-fluid w-100"
-                            />
-                        </a>
-                        <div class="tf__blog_text">
-                            <span>31 December,2022</span>
-                            <ul>
-                                <li>
-                                    <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
-                                </li>
-                                <li>
-                                    <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
-                                </li>
-                            </ul>
-                            <a href="blog_details.html"
-                            >The standard personal My portfolio</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <a href="blog_list.html" class="common_btn">More Blog +</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="tf__subscribe" style="background: url(images/bg/subscribe.jpg)">
-        <div class="tf__subscribe_overlay pt_115 xs_pt_75 pb_120 xs_pb_80">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-8 col-md-10 m-auto">
-                        <div class="tf__subscribe_text">
-                            <h3 class="has-animation">SUBSCRIBE MY NEWSLETTER</h3>
-                            <form action="#" class="">
-                                <input type="text" placeholder="Enter Your Email"/>
-                                <button type="submit" class="common_btn">Notify Now</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
